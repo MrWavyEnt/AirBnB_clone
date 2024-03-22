@@ -1,0 +1,124 @@
+o
+    >]êb£  ã                   @   sŽ   d Z ddlZddlZddlZddlmZ ddlmZ ddl mZ G dd „ d ej	ƒZ
+G dd	„ d	ej	ƒZ
+G d
+d
+„ d
+ej	ƒZe
+dkrEe ¡  dS dS )
+zDefines unittests for models/base_model.py.
+
+Unittest classes:
+    TestBaseModel_instantiation
+    TestBaseModel_save
+    TestBaseModel_to_dict
+é    N)Údatetime)Úsleep)Ú	BaseModelc                   @   sx   e Zd ZdZdd„ Zdd„ Zdd „ Zdd	„ Z d
+d
+„ Zdd
+„ Z	dd„ Z
+dd„ Z
+dd„ Zdd„ Z
+dd„ Zdd„ Zdd„ ZdS )ÚTestBaseModel_instantiationz;Unittests for testing instantiation of the BaseModel class.c                 C   s   |   tttƒ ƒ¡ d S ©N)Ú
+assertEqualr   Útype©Úself© r
+   úO/home/lexxyla/Desktop/Brennan/AirBnB_clone/tests/test_models/test_base_model.pyÚtest_no_args_instantiates   s   z5TestBaseModel_instantiation.test_no_args_instantiatesc                 C   s   |   tƒ tj ¡  ¡ ¡ d S r   )ÚassertInr   ÚmodelsÚ storageÚallÚvaluesr	   r
+   r
+   r   Ú#test_new_instance_stored_in_objects   s   z?TestBaseModel_instantiation.test_new_instance_stored_in_objectsc                 C   ó   |   tttƒ jƒ¡ d S r   )r    Ústrr   r   Úidr	   r
+   r
+   r   Útest_id_is_public_str   ó   z1TestBaseModel_instantiation.test_id_is_public_strc                 C   r   r   )r    r   r   r   Ú
+created_atr	   r
+   r
+   r   Ú"test_created_at_is_public_datetime   r   z>TestBaseModel_instantiation.test_created_at_is_public_datetimec                 C   r   r   )r    r   r   r   Ú
+updated_atr	   r
+   r
+   r   Ú"test_updated_at_is_public_datetime    r   z>TestBaseModel_instantiation.test_updated_at_is_public_datetimec                 C   s    t ƒ }t ƒ }|  |j|j¡ d S r   )r   ÚassertNotEqualr   ©r
+   Zbm1Zbm2r
+   r
+   r   Útest_two_models_unique_ids#   s   z6TestBaseModel_instantiation.test_two_models_unique_idsc                 C   ó(   t ƒ }tdƒ t ƒ }|  |j|j¡ d S ©Ngš™™™™™©?)r   r   Ú
+assertLessr   r   r
+   r
+   r   Ú$test_two_models_different_created_at(   ó   z@TestBaseModel_instantiation.test_two_models_different_created_atc                 C   r    r!   )r   r   r"   r   r   r
+   r
+   r   Ú$test_two_models_different_updated_at.   r$   z@TestBaseModel_instantiation.test_two_models_different_updated_atc                 C   sl   t  ¡ }t|ƒ}tƒ }d|_| |_|_|  ¡ }|  d|¡ |  d|¡ |  d| |¡ |  d| |¡ d S )NÚ123456z[BaseModel] (123456)z'id': '123456'z'created_at': z'updated_at': )	r   ÚtodayÚreprr   r   r   r   Ú __str__r   )r
+   ÚdtÚ dt_reprÚbmZbmstrr
+   r
+   r   Útest_str_representation4   s   z3TestBaseModel_instantiation.test_str_representationc                 C   s   t d ƒ}|  d |j ¡ ¡ d S r   )r   Ú
+assertNotInÚ__dict__r   ©r
+   r,   r
+   r
+   r   Útest_args_unused@   s   z,TestBaseModel_instantiation.test_args_unusedc                 C   sL   t  ¡ }| ¡ }td||d}|  |jd¡ |  |j|¡ |  |j |¡ d S )NÚ345©r   r   r   ©r   r'   Ú	isoformatr   r    r   r   r   ©r
+   r*   Údt_isor,   r
+   r
+   r   Útest_instantiation_with_kwargsD   s   z:TestBaseModel_instantiation.test_instantiation_with_kwargsc                 C   s>   |   t¡ td d d d W d   ƒ d S 1 sw   Y  d S )Nr3   )ÚassertRaisesÚ	TypeErrorr   r	   r
+   r
+   r   Ú#test_instantiation_with_None_kwargsL   s   "ÿz?TestBaseModel_instantiation.test_instantiation_with_None_kwargsc                 C   sN   t  ¡ }| ¡ }tdd||d}|  |jd¡ |  |j|¡ |  |j |¡ d S )NZ12r2   r3   r4   r6   r
+   r
+   r   Ú'test_instantiation_with_args_and_kwargsP   s   zCTestBaseModel_instantiation.test_instantiation_with_args_and_kwargsN)Ú__name__Ú
+__module__Ú__qualname__Ú __doc__r
+   r   r   r   r   r   r#   r%   r-   r1   r8   r;   r<   r
+   r
+   r
+   r   r      s    r   c                   @   sH   e Zd ZdZedd„ ƒZedd„ ƒZdd „ Z dd	„ Zd
+d
+„ Z	dd
+„ Z
+dS )ÚTestBaseModel_savez9Unittests for testing save method of the BaseModel class.c                 C   s(   z	t  dd¡ W d S  ty   Y d S w ©Nú	file.jsonÚtmp)ÚosÚrenameÚ IOErrorr	   r
+   r
+   r   ÚsetUp\   s
+   ÿzTestBaseModel_save.setUpc                 C   sJ   z t  d¡ W n	 ty   Y nw z	t  dd¡ W d S  ty$   Y d S w rB   )rE   ÚremoverG   rF   r	   r
+   r
+   r   ÚtearDownc   s   ÿÿzTestBaseModel_save.tearDownc                 C   s.   t ƒ }tdƒ |j}| ¡  |  ||j¡ d S r!   ©r   r   r   Úsaver"   )r
+   r,   Úfirst_updated_atr
+   r
+   r   Ú
+test_one_saven   s
+   z TestBaseModel_save.test_one_savec                 C   sP   t ƒ }tdƒ |j}| ¡  |j}|  ||¡ tdƒ | ¡  |  ||j¡ d S r!   rK   )r
+   r,   rM   Úsecond_updated_atr
+   r
+   r   Útest_two_savesu   s   z!TestBaseModel_save.test_two_savesc                 C   ó@   t ƒ }|  t¡ | d ¡ W d   ƒ d S 1 sw   Y  d S r   )r   r9   r:   rL   r0   r
+   r
+   r   Útest_save_with_arg€   ó   "ÿz%TestBaseModel_save.test_save_with_argc                 C   sX   t ƒ }| ¡  d|j }tddƒ}|  || ¡ ¡ W d   ƒ d S 1 s%w   Y  d S )Nz
+BaseModel.rC   Úr)r   rL   r   Úopenr   Úread)r
+   r,   ZbmidÚfr
+   r
+   r   Útest_save_updates_file…   s   
+"ÿz)TestBaseModel_save.test_save_updates_fileN)
+r=   r>   r?   r@   Ú
+classmethodrH   rJ   rN   rP   rR   rX   r
+   r
+   r
+   r   rA   Y   s    
+
+
+ 
+rA   c                   @   sH   e Zd ZdZdd„ Zdd„ Zdd „ Zdd	„ Z d
+d
+„ Zdd
+„ Z	dd„ Z
+dS )ÚTestBaseModel_to_dictz<Unittests for testing to_dict method of the BaseModel class.c                 C   s   t ƒ }|  tt| ¡ ƒ¡ d S r   )r   Ú
+assertTrueÚdictr   Ú to_dictr0   r
+   r
+   r   Útest_to_dict_type   s   z'TestBaseModel_to_dict.test_to_dict_typec                 C   sJ   t ƒ }|  d| ¡ ¡ |  d| ¡ ¡ |  d| ¡ ¡ |  d| ¡ ¡ d S )Nr   r   r   Ú	__class__)r   r   r]   r0   r
+   r
+   r   Ú"test_to_dict_contains_correct_keys”   s
+   z8TestBaseModel_to_dict.test_to_dict_contains_correct_keysc                 C   s6   t ƒ }d|_d|_|  d| ¡ ¡ |  d| ¡ ¡ d S )NÚ	Holbertonéb   ÚnameÚ	my_number)r   rc   rd   r   r]   r0   r
+   r
+   r   Ú&test_to_dict_contains_added_attributes›   s
+   z<TestBaseModel_to_dict.test_to_dict_contains_added_attributesc                 C   s:   t ƒ }| ¡ }|  tt|d ƒ¡ |  tt|d ƒ¡ d S )Nr   r   )r   r]   r    r   r   )r
+   r,   Z bm_dictr
+   r
+   r   Ú)test_to_dict_datetime_attributes_are_strs¢   s   z?TestBaseModel_to_dict.test_to_dict_datetime_attributes_are_strsc                 C   sJ   t  ¡ }tƒ }d|_| |_|_dd| ¡ | ¡ dœ}|   | ¡ |¡ d S )Nr&   r   )r   r_   r   r   )	r   r'   r   r   r   r   r5   ÚassertDictEqualr]   )r
+   r*   r,   Útdictr
+   r
+   r   Útest_to_dict_output¨   s   üz)TestBaseModel_to_dict.test_to_dict_outputc                 C   s   t ƒ }|  | ¡ |j¡ d S r   )r   r   r]   r/   r0   r
+   r
+   r   Ú!test_contrast_to_dict_dunder_dictµ   s   z7TestBaseModel_to_dict.test_contrast_to_dict_dunder_dictc                 C   rQ   r   )r   r9   r:   r]   r0   r
+   r
+   r   Útest_to_dict_with_arg¹   rS   z+TestBaseModel_to_dict.test_to_dict_with_argN)
+r=   r>   r?   r@   r^   r`   re   rf   ri   rj   rk   r
+   r
+   r
+   r   rZ      s      
+rZ   Ú__main__)r@   rE   r   Úunittestr   Útimer   Úmodels.base_modelr   ÚTestCaser   rA   rZ   r=   Úmainr
+   r
+   r
+   r   Ú<module>   s    H42ÿ
